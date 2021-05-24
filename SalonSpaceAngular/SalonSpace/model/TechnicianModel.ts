@@ -1,31 +1,16 @@
-import Mongoose = require("mongoose");
+import Mongoose = require('mongoose');
 import {DataAccess} from '../DataAccess';
 import {ITechnicianModel} from '../interfaces/ITechnicianModel';
-//import {SkillModel} from './SkillModel';
-//import {LanguageModel} from './LanguageModel';
-import {RatingModel} from './RatingModel';
-import {RegisteredUserModel} from './RegisteredUserModel';
-import {SalonModel} from './SalonModel';
-
 
 let mongooseConnection = DataAccess.mongooseConnection;
-let mongooseObj = DataAccess.mongooseInstance;
 
 class TechnicianModel {
     public schema:any;
     public model:any;
-   // public RegisteredUsers:RegisteredUserModel;
-  
-    //public Ratings:RatingModel;
-    //public Salons:SalonModel;
-    
 
     public constructor() {
         this.createSchema();
         this.createModel();
-        
-        //this.Ratings = new RatingModel();
-        //this.Salons = new SalonModel();
     }
 
     public createSchema(): void {
@@ -61,7 +46,30 @@ class TechnicianModel {
             response.json(itemArray);
         });
     }
-    
+
+    public retrieveTechnicianRatings(response:any, filter:Object) {
+        var query = this.model.findOne(filter);
+        query.exec( (err, thisTechnician) => {
+            Mongoose.models.Ratings.find()
+            .where('ratingID')
+            .in(thisTechnician.ratingListID)
+            .exec( (err, ratingsArray) => {
+                response.json(ratingsArray);
+            });
+        });
+    }
+
+    public retrieveTechnicianSalons(response:any, filter:Object) {
+        var query = this.model.findOne(filter);
+        query.exec( (err, thisTechnician) => {
+            Mongoose.models.Salons.find()
+            .where('salonID')
+            .in(thisTechnician.salonListID)
+            .exec( (err, salonsArray) => {
+                response.json(salonsArray);
+            });
+        });
+    }
 
     public retrieveTechnicianCount(response:any): any {
         console.log("retrieve Technician Count ...");

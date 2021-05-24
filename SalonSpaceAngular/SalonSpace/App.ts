@@ -89,6 +89,18 @@ class App {
         this.Technicians.retrieveTechniciansDetails(res, {technicianID: id});
     });
 
+    router.get('/app/technician-rating/:technicianId', (req, res) => {
+      var id = req.params.technicianId;
+      console.log('Query ratings for technician with id: ' + id);
+      this.Technicians.retrieveTechnicianRatings(res, {technicianID: id});
+    });
+
+    router.get('/app/technician-salon/:technicianId', (req, res) => {
+      var id = req.params.technicianId;
+      console.log('Query salons for technician with id: ' + id);
+      this.Technicians.retrieveTechnicianSalons(res, {technicianID: id});
+    });
+
     router.get('/app/technician/', (req, res) => {
         console.log('Query All technicians');
         this.Technicians.retrieveAllTechnicians(res);
