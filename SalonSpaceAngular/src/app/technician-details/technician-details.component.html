@@ -1,1 +1,16 @@
-<p>technician-details works!</p>
+<div class="technician-details" *ngIf="result">
+    <h2>{{result?.name}}</h2>
+    <h3>Skills:</h3>
+    <ul>
+        <li *ngFor="let skill of result.skillList">
+            {{skill}}
+        </li>
+    </ul>
+    <h3>Languages:</h3>
+    <ul>
+        <li *ngFor="let language of result.languageList">
+            {{language}}
+        </li>
+    </ul>
+    <!-- <app-rating-published></app-rating-published> -->
+</div>

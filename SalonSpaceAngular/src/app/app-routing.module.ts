@@ -8,7 +8,7 @@ import { RatingPublishedComponent} from './rating-published/rating-published.com
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'technician', component: TechnicianListComponent },
-  { path: 'technician-details', component: TechnicianDetailsComponent }
+  { path: 'technician-details/:technicianID', component: TechnicianDetailsComponent }
 ];
 
 @NgModule({
