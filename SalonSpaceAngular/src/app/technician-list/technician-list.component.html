@@ -49,7 +49,7 @@
                     <div class="col-sm-10 col-sm-offset-1 card" *ngFor="let result of (techniciansObservable | async); let i = index">
                         <div id="profile-pic-"i class="profile-pic"></div>
                         <div class="profile-text"  >
-                            <p>{{result.name}}.. <a href="#">Click for more information</a></p>
+                            <p>{{result.name}}.. <a routerLink="/technician-details">Click for more information</a></p>
                             <div class="profile-tags">
                                 <div class="profile-tag">{{result.languageList[0]}}</div>
                             </div>
