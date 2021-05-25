@@ -1,1 +1,36 @@
-<p>technician-details works!</p>
+<div id="technician-details-container">
+    <div id="technician-details" class="technician-details" *ngIf="result">
+        <h2>{{result?.name}}</h2>
+        <div [id]="'profile-pic-' + result.technicianID" class="profile-pic"></div>
+        <h3>Skills:</h3>
+        <ul>
+            <li *ngFor="let skill of result.skillList">
+                {{skill}}
+            </li>
+        </ul>
+        <h3>Languages:</h3>
+        <ul>
+            <li *ngFor="let language of result.languageList">
+                {{language}}
+            </li>
+        </ul>
+    </div>
+    <div id="technician-salons" class="technician-details" *ngIf="salons">
+        <h3>You can find me at:</h3>
+        <ul>
+            <li *ngFor="let salon of salons">
+                <p class="technician-salon-name">{{salon.name}}</p>
+                <p class="technician-salon-address">{{salon.address}}</p>
+            </li>
+        </ul>
+    </div>
+    <div id="technician-reviews" class="technician-details" *ngIf="ratings">
+        <h3>What clients thought of me:</h3>
+        <div class="published-rating-card" *ngFor="let rating of ratings">
+            <div class="star-container">
+                <span *ngFor='let in of counter(rating.stars); let i = index'>*</span>
+            </div>
+            <p [ngClass]="rating.text ? 'review' : 'no-review'">{{rating.text || 'This user did not write a review.'}}</p>
+        </div>
+    </div>
+</div>

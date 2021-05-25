@@ -20,7 +20,6 @@ class RatingModel {
                 ratingID: Number,
                 stars: Number,
                 text: String,
-                //ratingListID: Array<Number>()
             }, {collection: 'ratings'}
         );
     }
@@ -36,6 +35,10 @@ class RatingModel {
         });
         
     }
+
+    // public retrieveTechnicianRatings(response: any): any {
+    //     var query = this.model.find({ ratingID: });
+    // }
 
     public retrieveRatingsDetails(response:any, filter:Object) {
         var query = this.model.findOne(filter);

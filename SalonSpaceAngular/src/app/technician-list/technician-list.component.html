@@ -47,11 +47,11 @@
 
                 <div class="container-fluid">
                     <div class="col-sm-10 col-sm-offset-1 card" *ngFor="let result of (techniciansObservable | async); let i = index">
-                        <div id="profile-pic-"i class="profile-pic"></div>
+                        <div [id]="'profile-pic-' + result.technicianID" class="profile-pic"></div>
                         <div class="profile-text"  >
-                            <p>{{result.name}}.. <a href="#">Click for more information</a></p>
+                            <p>{{result.name}}.. <a [routerLink]="['/technician-details', result.technicianID]">Click for more information</a></p>
                             <div class="profile-tags">
-                                <div class="profile-tag">{{result.languageList[0]}}</div>
+                                <div class="language-tag" *ngFor="let language of result.languageList">{{language}}</div>
                             </div>
                         </div>
                     </div>
