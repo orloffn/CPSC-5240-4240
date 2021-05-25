@@ -10,21 +10,36 @@ import ITechnicianModelAngular from '../share/ITechnicianModelAngular';
   styleUrls: ['./technician-details.component.less']
 })
 export class TechnicianDetailsComponent implements OnInit {
-  // technicianObservable: Observable<ITechnicianModelAngular[]>;
   technicianID: number;
   sub: any;
   result: any;
+  ratings: any;
+  salons: any;
+  counter(i: number) {
+    return new Array(i);
+  }
   constructor(
     private route: ActivatedRoute,
     salon$: SalonSpaceService
   ) {
     this.technicianID = route.snapshot.params['technicianID'];
-    // this.technicianObservable=salon$.getTechnicianDetails(this.technicianID);
     salon$.getTechnicianDetails(this.technicianID).subscribe(
       data => {
         this.result = data;
-        console.log(data);
-      } 
+        console.log('technician data: ', data);
+      }
+    );
+    salon$.getTechnicianRatings(this.technicianID).subscribe(
+      data => {
+        this.ratings = data;
+        console.log('ratings data:: ', data);
+      }
+    );
+    salon$.getTechnicianSalons(this.technicianID).subscribe(
+      data => {
+        this.salons = data;
+        console.log('salons data:: ', data);
+      }
     );
   }
    
@@ -32,32 +47,3 @@ export class TechnicianDetailsComponent implements OnInit {
   }
 
 }
-
-
-
-
-// export class ListComponent implements OnInit {
-//   listId: string;
-//   listItems: Item; // ITaskModelAngular[];
-//   name: string;
-
-//   constructor(
-//     private route: ActivatedRoute,
-//     private location: Location,
-//     private list$: ListsService
-//   ) { 
-//     this.listId = route.snapshot.params['id'];
-//     list$.getItems(this.listId)
-//     .subscribe(
-//       result => {
-//         this.listItems = result.tasks;
-//         this.name = result.name;
-//       },
-//       () => {},
-//       () => {}
-//     );
-//   }
-
-//   ngOnInit():void {}
-
-// }

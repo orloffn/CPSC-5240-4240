@@ -16,7 +16,13 @@ export class SalonSpaceService {
   getTechnicianDetails(technicianID: number) {
     return this.httpClient.get<ITechnicianModelAngular[]>( this.hostUrl + 'app/technician/' + technicianID);// + 'json/lists.json'
   }
+  getTechnicianRatings(technicianID: number) {
+    return this.httpClient.get<ITechnicianModelAngular[]>( this.hostUrl + 'app/technician-rating/' + technicianID);
+  }
+  getTechnicianSalons(technicianID: number) {
+    return this.httpClient.get<ITechnicianModelAngular[]>( this.hostUrl + 'app/technician-salon/' + technicianID);
+  }
   getRatings() : Observable<IRatingModelAngular[]> {
-    return this.httpClient.get<IRatingModelAngular[]>(this.hostUrl + 'app/rating')
+    return this.httpClient.get<IRatingModelAngular[]>(this.hostUrl + 'app/rating');
   }
 }
