@@ -1,14 +1,15 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Mongoose = require("mongoose");
-const DataAccess_1 = require("../DataAccess");
-let mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-class TechnicianModel {
-    constructor() {
+exports.__esModule = true;
+exports.TechnicianModel = void 0;
+var Mongoose = require("mongoose");
+var DataAccess_1 = require("../DataAccess");
+var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
+var TechnicianModel = /** @class */ (function () {
+    function TechnicianModel() {
         this.createSchema();
         this.createModel();
     }
-    createSchema() {
+    TechnicianModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
             registeredUserID: Number,
             technicianID: Number,
@@ -17,53 +18,52 @@ class TechnicianModel {
             salonListID: Array(),
             languageList: Array()
         }, { collection: 'technicians' });
-    }
-    createModel() {
+    };
+    TechnicianModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("Technicians", this.schema);
-    }
-    retrieveAllTechnicians(response) {
+    };
+    TechnicianModel.prototype.retrieveAllTechnicians = function (response) {
         var query = this.model.find({});
-        query.exec((err, itemArray) => {
+        query.exec(function (err, itemArray) {
             console.log(itemArray);
             response.json(itemArray);
         });
-    }
-    retrieveTechniciansDetails(response, filter) {
+    };
+    TechnicianModel.prototype.retrieveTechniciansDetails = function (response, filter) {
         var query = this.model.findOne(filter);
-        query.exec((err, itemArray) => {
+        query.exec(function (err, itemArray) {
             console.log(itemArray);
             response.json(itemArray);
         });
-    }
-    retrieveTechnicianRatings(response, filter) {
+    };
+    TechnicianModel.prototype.retrieveTechnicianRatings = function (response, filter) {
         var query = this.model.findOne(filter);
-        query.exec((err, thisTechnician) => {
+        query.exec(function (err, thisTechnician) {
             Mongoose.models.Ratings.find()
-                .where('ratingID')
-                .in(thisTechnician.ratingListID)
-                .exec((err, ratingsArray) => {
+                .where('ratingID')["in"](thisTechnician.ratingListID)
+                .exec(function (err, ratingsArray) {
                 response.json(ratingsArray);
             });
         });
-    }
-    retrieveTechnicianSalons(response, filter) {
+    };
+    TechnicianModel.prototype.retrieveTechnicianSalons = function (response, filter) {
         var query = this.model.findOne(filter);
-        query.exec((err, thisTechnician) => {
+        query.exec(function (err, thisTechnician) {
             Mongoose.models.Salons.find()
-                .where('salonID')
-                .in(thisTechnician.salonListID)
-                .exec((err, salonsArray) => {
+                .where('salonID')["in"](thisTechnician.salonListID)
+                .exec(function (err, salonsArray) {
                 response.json(salonsArray);
             });
         });
-    }
-    retrieveTechnicianCount(response) {
+    };
+    TechnicianModel.prototype.retrieveTechnicianCount = function (response) {
         console.log("retrieve Technician Count ...");
         var query = this.model.estimatedDocumentCount();
-        query.exec((err, numberOfTechnicians) => {
+        query.exec(function (err, numberOfTechnicians) {
             console.log("numberOfTechnicians: " + numberOfTechnicians);
             response.json(numberOfTechnicians);
         });
-    }
-}
+    };
+    return TechnicianModel;
+}());
 exports.TechnicianModel = TechnicianModel;
