@@ -9,7 +9,15 @@
 
 # dependencies
 /node_modules
-
+/SalonSpace/node_modules
+/Mocha/node_modules
+/createDB
+/curlCommands
+/dbCommands
+/e2e
+/node_modules
+/docs
+/db
 # profiling files
 chrome-profiler-events*.json
 

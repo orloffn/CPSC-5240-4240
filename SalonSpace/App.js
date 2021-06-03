@@ -219,11 +219,12 @@ var App = /** @class */ (function () {
             console.log('Query the number of rating elements in db');
             _this.Ratings.retrieveAllratingsCount(res);
         });
-        this.expressApp.use('/', router);
-        this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
-        this.expressApp.use('/images', express.static(__dirname + '/img'));
-        this.expressApp.use('/', express.static(__dirname + '/pages'));
-        this.expressApp.use(express.static(__dirname + '/public'));
+        this.expressApp.use('/', express.static(__dirname + '/dist/SalonSpaceAngular'));
+        //this.expressApp.use('/', router);
+        //this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
+        //this.expressApp.use('/images', express.static(__dirname+'/img'));
+        //this.expressApp.use('/', express.static(__dirname+'/pages'));
+        //this.expressApp.use(express.static(__dirname + '/public'));
     };
     return App;
 }());
