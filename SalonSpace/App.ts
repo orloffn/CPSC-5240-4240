@@ -67,7 +67,7 @@ class App {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
    });
-   
+  
   //API endpoints for technician
     router.post('/app/technician/', (req, res) => {
       console.log(req.body);
@@ -277,12 +277,12 @@ class App {
     
     this.expressApp.use('/',express.static(__dirname+'/dist/SalonSpaceAngular'));
 
-    //this.expressApp.use('/', router);
+    this.expressApp.use('/', router);
    
-    //this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
-    //this.expressApp.use('/images', express.static(__dirname+'/img'));
-    //this.expressApp.use('/', express.static(__dirname+'/pages'));
-    //this.expressApp.use(express.static(__dirname + '/public'));
+    this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
+    this.expressApp.use('/images', express.static(__dirname+'/img'));
+    this.expressApp.use('/', express.static(__dirname+'/pages'));
+    this.expressApp.use(express.static(__dirname + '/public'));
     
   }
 

@@ -5,6 +5,9 @@ var Mongoose = require("mongoose");
 var DataAccess = /** @class */ (function () {
     function DataAccess() {
         // DataAccess.connect();
+        {
+            useUnifiedTopology: true;
+        }
     }
     DataAccess.connect = function () {
         if (this.mongooseInstance)

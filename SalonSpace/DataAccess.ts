@@ -11,6 +11,7 @@ class DataAccess {
     
     constructor () {
       // DataAccess.connect();
+      { useUnifiedTopology: true }
     }
     
     static connect (): Mongoose.Connection {
