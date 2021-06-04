@@ -3,10 +3,16 @@ import Mongoose = require("mongoose");
 class DataAccess {
     static mongooseInstance: any;
     static mongooseConnection: Mongoose.Connection;
-    static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:test@localhost:3000/SalonSpace?authSource=admin';
+    //static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:test@localhost:3000/SalonSpace?authSource=admin';
+    static DB_CONNECTION_STRING:string = 'mongodb+srv://SalonSpace123:SalonSpace123@cluster0.txxl6.mongodb.net/SalonSpace?retryWrites=true&w=majority';
+
+
+
     
     constructor () {
-        DataAccess.connect();
+      // DataAccess.connect();
+     // { useUnifiedTopology: true };
+      //{ useNewUrlParser: true };
     }
     
     static connect (): Mongoose.Connection {

@@ -18,8 +18,9 @@
   "dependencies": {
     "assert": "*",
     "async": "^2.6.1",
-    "chai": "^4.1.2",
-    "chai-http": "^4.0.0",
+    "chai": "^4.3.4",
+    "chai-asserttype": "^1.0.5",
+    "chai-http": "^4.3.0",
     "mocha": "^5.2.0",
     "q": "^1.5.1"
   },

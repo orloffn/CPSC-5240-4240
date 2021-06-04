@@ -10,6 +10,10 @@ File content:
 Make sure you install the node.js server and Mongo DB sofware from the side.  Ensure your path variable contains the execution path of the node.js and mongo binary.
 
 To execute the server db and then the node server with the following commands:
+-----steps to connect to mongoDB cluster 
+1. mongo "mongodb+srv://SalonSpace123:SalonSpace123@cluster0.txxl6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority" --username SalonSpace123
+
+2. load ('createDB/createSalonSpaceSampleData.js.txt');
 
 //create the db file directory
 0. md db
@@ -22,7 +26,7 @@ To execute the server db and then the node server with the following commands:
 >load ('createDB/createSalonSpaceSampleData.js');
 >load ('createDB/createAdminUser.js');
 >exit
-
+SalonSpace\createDB\createSalonSpaceSampleData.js
 //install npm packages
 3. .\startdbClient.toDoSample.cmd
 
