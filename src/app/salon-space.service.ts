@@ -7,8 +7,8 @@ import IRatingModelAngular from './share/IRatingModelAngular';
 @Injectable()
 export class SalonSpaceService {
  // hostUrl:string = 'http://localhost:8080/';
- hostUrl:string = 'https://salonspace.azurewebsites.net/';
- //hostUrl:string= '/';
+//  hostUrl:string = 'https://salonspace.azurewebsites.net/';
+ hostUrl:string= '/';
  
 
  

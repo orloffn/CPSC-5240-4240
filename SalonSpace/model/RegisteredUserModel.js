@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegisteredUserModel = void 0;
 const Mongoose = require("mongoose");
 const DataAccess_1 = require("../DataAccess");
 let mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;

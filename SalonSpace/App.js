@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.App = void 0;
 const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
@@ -218,12 +217,12 @@ class App {
             console.log('Query the number of rating elements in db');
             this.Ratings.retrieveAllratingsCount(res);
         });
-        this.expressApp.use('/', express.static(__dirname + '/SalonSpaceAngular'));
-        // this.expressApp.use('/', router);
+        this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));
         // this.expressApp.use('/', express.static(__dirname+'/pages'));
-        this.expressApp.use(express.static(__dirname + '/public'));
+        // this.expressApp.use(express.static(__dirname + '/public'));
+        this.expressApp.use('/', express.static(__dirname + '/SalonSpaceAngular'));
     }
 }
 exports.App = App;
