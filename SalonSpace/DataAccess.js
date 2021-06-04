@@ -5,14 +5,8 @@ var Mongoose = require("mongoose");
 var DataAccess = /** @class */ (function () {
     function DataAccess() {
         // DataAccess.connect();
-        {
-            useUnifiedTopology: true;
-        }
-        ;
-        {
-            useNewUrlParser: true;
-        }
-        ;
+        // { useUnifiedTopology: true };
+        //{ useNewUrlParser: true };
     }
     DataAccess.connect = function () {
         if (this.mongooseInstance)
@@ -25,7 +19,7 @@ var DataAccess = /** @class */ (function () {
         return this.mongooseInstance;
     };
     //static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:test@localhost:3000/SalonSpace?authSource=admin';
-    DataAccess.DB_CONNECTION_STRING = 'mongodb+srv://SalonSpace123:SalonSpace123@cluster0.txxl6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+    DataAccess.DB_CONNECTION_STRING = 'mongodb+srv://SalonSpace123:SalonSpace123@cluster0.txxl6.mongodb.net/SalonSpace?retryWrites=true&w=majority';
     return DataAccess;
 }());
 exports.DataAccess = DataAccess;
