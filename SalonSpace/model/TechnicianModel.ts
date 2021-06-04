@@ -1,15 +1,8 @@
-import Mongoose = require("mongoose");
+import Mongoose = require('mongoose');
 import {DataAccess} from '../DataAccess';
 import {ITechnicianModel} from '../interfaces/ITechnicianModel';
-//import {SkillModel} from './SkillModel';
-//import {LanguageModel} from './LanguageModel';
-import {RatingModel} from './RatingModel';
-import {RegisteredUserModel} from './RegisteredUserModel';
-import {SalonModel} from './SalonModel';
-
 
 let mongooseConnection = DataAccess.mongooseConnection;
-let mongooseObj = DataAccess.mongooseInstance;
 
 class TechnicianModel {
     public schema:any;
@@ -40,18 +33,43 @@ class TechnicianModel {
     public retrieveAllTechnicians(response:any): any {
         var query = this.model.find({});
         query.exec( (err, itemArray) => {
+            console.log(itemArray);
             response.json(itemArray) ;
         });
         
     }
     
     public retrieveTechniciansDetails(response:any, filter:Object) {
-        var query = this.model.findOne({technicianID: '1'});
+        var query = this.model.findOne(filter);
         query.exec( (err, itemArray) => {
+            console.log(itemArray);
             response.json(itemArray);
         });
     }
-    
+
+    public retrieveTechnicianRatings(response:any, filter:Object) {
+        var query = this.model.findOne(filter);
+        query.exec( (err, thisTechnician) => {
+            Mongoose.models.Ratings.find()
+            .where('ratingID')
+            .in(thisTechnician.ratingListID)
+            .exec( (err, ratingsArray) => {
+                response.json(ratingsArray);
+            });
+        });
+    }
+
+    public retrieveTechnicianSalons(response:any, filter:Object) {
+        var query = this.model.findOne(filter);
+        query.exec( (err, thisTechnician) => {
+            Mongoose.models.Salons.find()
+            .where('salonID')
+            .in(thisTechnician.salonListID)
+            .exec( (err, salonsArray) => {
+                response.json(salonsArray);
+            });
+        });
+    }
 
     public retrieveTechnicianCount(response:any): any {
         console.log("retrieve Technician Count ...");

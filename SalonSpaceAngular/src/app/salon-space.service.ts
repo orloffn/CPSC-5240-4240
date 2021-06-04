@@ -6,7 +6,7 @@ import IRatingModelAngular from './share/IRatingModelAngular';
 
 @Injectable()
 export class SalonSpaceService {
-  hostUrl:string = 'http://localhost:8080/';
+  hostUrl:string = '/';
 
   constructor(private httpClient: HttpClient) { }
 

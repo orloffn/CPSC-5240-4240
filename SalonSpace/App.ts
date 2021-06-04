@@ -59,16 +59,15 @@ class App {
   // Configure API endpoints.
   private routes(): void {
     let router = express.Router();
-
-    router.use( (req, res, next) => {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      next();
-    });
   
   //API endpoint for application
 
-    
+  router.use( (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+   });
+   
   //API endpoints for technician
     router.post('/app/technician/', (req, res) => {
       console.log(req.body);
@@ -88,6 +87,18 @@ class App {
         var id = req.params.technicianId;
         console.log('Query single technician with id: ' + id);
         this.Technicians.retrieveTechniciansDetails(res, {technicianID: id});
+    });
+
+    router.get('/app/technician-rating/:technicianId', (req, res) => {
+      var id = req.params.technicianId;
+      console.log('Query ratings for technician with id: ' + id);
+      this.Technicians.retrieveTechnicianRatings(res, {technicianID: id});
+    });
+
+    router.get('/app/technician-salon/:technicianId', (req, res) => {
+      var id = req.params.technicianId;
+      console.log('Query salons for technician with id: ' + id);
+      this.Technicians.retrieveTechnicianSalons(res, {technicianID: id});
     });
 
     router.get('/app/technician/', (req, res) => {
@@ -214,7 +225,7 @@ class App {
     });
           
     router.get('/app/discount/:discountId', (req, res) => {
-      var id = req.params.DiscountId;
+      var id = req.params.discountId;
       console.log('Query single registered Discount with id: ' + id);
       this.Discounts.retrieveDiscountDetails(res, { discountID: id });
     });
@@ -270,7 +281,7 @@ class App {
 
     this.expressApp.use('/app/json/', express.static(__dirname+'/app/json'));
     this.expressApp.use('/images', express.static(__dirname+'/img'));
-    this.expressApp.use('/', express.static(__dirname+'/pages'));
+    this.expressApp.use('/', express.static(__dirname+'/dist/SalonSpaceAngular'));
     this.expressApp.use(express.static(__dirname + '/public'));
     
   }
