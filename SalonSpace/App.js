@@ -218,7 +218,7 @@ class App {
             console.log('Query the number of rating elements in db');
             this.Ratings.retrieveAllratingsCount(res);
         });
-        this.expressApp.use('/', express.static(__dirname + '/SalonSpaceAngularSrc'));
+        this.expressApp.use('/', express.static(__dirname + '/SalonSpaceAngular'));
         // this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));
