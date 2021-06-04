@@ -8,6 +8,11 @@ var DataAccess = /** @class */ (function () {
         {
             useUnifiedTopology: true;
         }
+        ;
+        {
+            useNewUrlParser: true;
+        }
+        ;
     }
     DataAccess.connect = function () {
         if (this.mongooseInstance)

@@ -275,7 +275,7 @@ class App {
 
 
     
-    this.expressApp.use('/',express.static(__dirname+'/dist/SalonSpaceAngular'));
+    this.expressApp.use('/',express.static(__dirname+'/SalonSpaceAngularSrc'));
 
     this.expressApp.use('/', router);
    
